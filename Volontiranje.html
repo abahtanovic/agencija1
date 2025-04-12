@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Putuj sa nama</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script type="module" src="firebase.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            background-color: #f4f1eb;
+            font-family: Arial, sans-serif;
+        }
+
+        .container2 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #9e7e4e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        header h15 {
+            font-size: 2rem;
+        }
+
+        .Navigacija4 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .Navigacija4 ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .Navigacija4 ul li {
+            display: inline;
+        }
+
+        .Navigacija4 ul li a {
+            color: #9e7e4e;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .Navigacija4 ul li a:hover {
+            color: #6b4226;
+        }
+
+        .podnaslov1 {
+            text-align: center;
+            font-size: 1rem;
+            color: #6d3f05;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        table.volontiranje {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0px;
+            margin-top: 20px;
+        }
+
+        table.volontiranje th, table.volontiranje td {
+            border: 1px solid #9e7e4e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table.volontiranje th {
+            background-color: #9e7e4e;
+            color: rgb(255, 255, 255);
+        }
+
+        table.volontiranje td {
+            background-color: #f9f9f9;
+        }
+
+        .tekst1, .volontiranje-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #9e7e4e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        form {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .forma {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="date"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button.submit-btn {
+            background-color: #9e7e4e;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.submit-btn:hover {
+            background-color: #7d5a3b;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border: 1px solid #9e7e4e;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .comments-section {
+            margin-top: 40px;
+        }
+
+        .comment {
+            border: 1px solid #9e7e4e;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .comment .comment-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .comment .comment-body {
+            margin-top: 10px;
+        }
+
+        .delete-btn {
+            background-color: #e60000;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #b30000;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <nav class="Navigacija4">
+            <ul class="nav justify-content-center bg-dark p-3">
+                <li class="nav-item"><a class="nav-link text-light" href="Pocetna.html">Početna</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="O nama.html">O nama</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Ponude.html">Ponude</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Volontiranje.html">Volontiranje</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Putuj.html">Putuj</a></li>
+            </ul>
+        </nav>
+
+        <div class="container2">
+            <header>
+                <h15>BUDI VOLONTER</h15>
+            </header>
+
+            <p class="podnaslov1">
+                Volontiranje u turističkoj agenciji predstavlja izvrsnu priliku za sve one koji su strastveni prema putovanjima, 
+                žele steći novo iskustvo i doprinijeti uspjehu jedne dinamične industrije. Kroz volontiranje, možete steći 
+                vrijedna znanja i vještine, upoznati nove ljude i proširiti svoje horizonte.
+            </p>
+
+            <h2 class="podnaslov1">Zašto volontirati u turističkoj agenciji?</h2>
+
+            <table class="volontiranje">
+                <thead>
+                    <tr>
+                        <th>Razlog</th>
+                        <th>Opis</th>
+                        <th>Odaberi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Stjecanje praktičnog iskustva</td>
+                        <td>Volontiranje vam omogućuje da steknete praktično iskustvo u različitim područjima turističke industrije, kao 
+                            što su rezervacije, organizacija putovanja, marketing i prodaja.</td>
+                        <td><input type="checkbox" name="reason" value="Praktično iskustvo" onclick="showMessage(this)"></td>
+                    </tr>
+                    <tr>
+                        <td>Razvoj vještina</td>
+                        <td>Tokom volontiranja ćete razviti važne vještine poput komunikacije, rada u timu, organizacije, rješavanja problema 
+                            i upravljanja vremenom.</td>
+                        <td><input type="checkbox" name="reason" value="Razvoj vještina" onclick="showMessage(this)"></td>
+                    </tr>
+                    <tr>
+                        <td>Upoznavanje turističke industrije</td>
+                        <td>Steći ćete uvid u funkcioniranje turističke agencije i upoznati se s najnovijim trendovima u turizmu.</td>
+                        <td><input type="checkbox" name="reason" value="Upoznavanje industrije" onclick="showMessage(this)"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="message"></div>
+
+            <h2 class="podnaslov1">Prijava za volontiranje</h2>
+            <form id="volonterForma" method="post">
+                <div class="forma">
+                    <label for="ime">Ime:</label>
+                    <input type="text" id="ime" name="ime" required>
+                </div>
+            
+                <div class="forma">
+                    <label for="prezime">Prezime:</label>
+                    <input type="text" id="prezime" name="prezime" required>
+                </div>
+            
+                <div class="forma">
+                    <label for="datum">Datum rođenja:</label>
+                    <input type="date" id="datum" name="datum" required>
+                </div>
+            
+                <div class="forma">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            
+                <div class="forma">
+                    <label for="broj">Broj telefona:</label>
+                    <input type="tel" id="broj" name="broj" required>
+                </div>
+            
+                <div class="forma">
+                    <button type="submit" class="btn btn-primary submit-btn">Pošaljite prijavu</button>
+                </div>
+            </form>
+
+            
+<!-- Sekcija za komentare -->
+<div id="commentSection" style="display:none;">
+    <h3>Ostavite komentar</h3>
+    <textarea id="commentText"></textarea>
+    <button id="submitCommentBtn">Pošaljite komentar</button>
+    <h4>Svi komentari:</h4>
+    <div id="commentsList"></div>
+</div>
+
+
+        <footer>
+            <p>&copy; 2024 Turistička agencija</p>
+        </footer>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

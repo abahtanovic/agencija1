@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nama - Turistička agencija</title>
+    <!-- Uključivanje Bootstrap CSS-a -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Vaši prilagođeni stilovi */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            background-color: #f4f1eb;
+        }
+
+        .container2 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #9e7e4e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        header h15 {
+            font-size: 2rem;
+        }
+
+        .Navigacija1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .Navigacija1 ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .Navigacija1 ul li {
+            display: inline;
+        }
+
+        .Navigacija1 ul li a {
+            color: #9e7e4e;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .Navigacija1 ul li a:hover {
+            color: #6b4226;
+        }
+
+        .Navigacija1 ul li a.active {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        section.onama {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        section.onama h12 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #9e7e4e;
+        }
+
+        .content-container1 {
+            padding: 20px;
+        }
+
+        .grid-container1 {
+            display: grid;
+            grid-template-columns: 1fr; /* Promijenjeno u 1 kolonu */
+            gap: 20px;
+        }
+
+        .grid-item1 {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item1 h2 {
+            color: #9e7e4e;
+        }
+
+        .grid-item1 p {
+            color: #7a7a7a;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #9e7e4e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <nav class="Navigacija1">
+            <ul class="nav justify-content-center bg-dark p-3">
+                <li class="nav-item"><a class="nav-link text-light" href="Pocetna.html">Početna</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="O nama.html">O nama</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Ponude.html">Ponude</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Volontiranje.html">Volontiranje</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Putuj.html">Putuj</a></li>
+            </ul>
+        </nav>
+
+        <section class="onama">
+            <h12>O našoj turističkoj agenciji</h12>
+            <div id="citat-container"></div>
+
+            <div class="content-container1">
+                <div class="grid-container1">
+                    <div class="grid-item1">
+                        <h2>Naša misija</h2>
+                        <p>Naša agencija ima misiju omogućiti nezaboravna putovanja koja obogaćuju živote naših klijenata. Organiziramo putovanja koja uključuju kulturna istraživanja, avanture u prirodi, kao i opuštanje na najljepšim destinacijama. Naša predanost kvaliteti i zadovoljstvu klijenata naš je temelj uspjeha.</p>
+                    </div>
+                    <div class="grid-item1">
+                        <h2>Što nudimo?</h2>
+                        <p>Od putovanja na egzotične otoke do istraživanja evropskih gradova, naša agencija nudi širok spektar turističkih usluga. Specijalizirani smo za individualne ture, grupna putovanja, te luksuzna odmarališta i cruise ture. Svakom klijentu pružamo personalizirani pristup, osiguravajući nevjerojatne uspomene.</p>
+                    </div>
+                    <div class="grid-item1">
+                        <h2>Naša historija</h2>
+                        <p>Naša agencija je osnovana 2005. godine s ciljem da turistima pružimo visokokvalitetne usluge i iskustva koja ostaju u sjećanju. Tokom godina, s ljubavlju i strašću prema turizmu, širili smo našu ponudu i pridobili mnoge zadovoljna putnike širom svijeta. Danas smo prepoznati kao lideri u turističkoj industriji u regiji.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Turistička agencija</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+<!-- Učitaj Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js"></script>
+
+<!-- Učitaj moj Firebase skript -->
+<script src="firebase.js"></script>
+
+
+</body>
+</html>
+

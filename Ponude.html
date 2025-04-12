@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trenutne Ponude</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            background-color: #f4f1eb; 
+        }
+
+        .container {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #9e7e4e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        header h13 {
+            font-size: 2rem;
+        }
+
+        .Navigacija2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .Navigacija2 ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .Navigacija2 ul li {
+            display: inline;
+        }
+
+        .Navigacija2 ul li a {
+            color: #9e7e4e;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .Navigacija2 ul li a:hover {
+            color: #6b4226;
+        }
+
+        .podnaslov {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7a7a7a;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        table.ponude {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table.ponude th, table.ponude td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        table.ponude th {
+            background-color: #9e7e4e;
+            color: white;
+        }
+
+        table.ponude td {
+            background-color: #f9f9f9;
+        }
+
+        .rim-text, .bali-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        video {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            justify-content: center;
+        }
+
+        footer {
+            background-color: #9e7e4e;
+            color: #f4f1eb;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            align-items: center;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+        }
+
+        .filter {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        
+
+        .rating {
+            cursor: pointer;
+        }
+
+        .rating:hover {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <nav class="Navigacija2">
+            <ul class="nav justify-content-center bg-dark p-3">
+                <li class="nav-item"><a class="nav-link text-light" href="Pocetna.html">Početna</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="O nama.html">O nama</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Ponude.html">Ponude</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Volontiranje.html">Volontiranje</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Putuj.html">Putuj</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <div class="container">
+        <header>
+            <h13>SVI PUTEVI VODE U...</h13>
+        </header>
+        
+        <div class="podnaslov">
+            <p>Pronađite najbolja putovanja po super cijenama za narednu godinu!</p>
+            <div class="filter">
+                <input type="number" id="price-filter" placeholder="Maksimalna cijena (EUR)">
+                <input type="text" id="date-filter" placeholder="Unesite mjesec (npr. Mart 2025)">
+                <button id="filter-button">Filtriraj</button>
+            </div>
+           
+        <table class="ponude">
+            <thead>
+                <tr>
+                    <th>Grad</th>
+                    <th>Datum</th>
+                    <th>Cijena (EUR)</th>
+                    <th>Ocjena</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-price="350" data-date="mart 2025">
+                    <td>Istanbul</td>
+                    <td>Mart 2025</td>
+                    <td>350€</td>
+                    <td class="rating" data-rate="0">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </td>
+                </tr>
+                <tr data-price="400" data-date="april 2025">
+                    <td>London</td>
+                    <td>April 2025</td>
+                    <td>400€</td>
+                    <td class="rating" data-rate="0">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </td>
+                </tr>
+                <tr data-price="450" data-date="maj 2025">
+                    <td>Barcelona</td>
+                    <td>Maj 2025</td>
+                    <td>450€</td>
+                    <td class="rating" data-rate="0">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </td>
+                </tr>
+                <tr data-price="500" data-date="jun 2025">
+                    <td>Paris</td>
+                    <td>Jun 2025</td>
+                    <td>500€</td>
+                    <td class="rating" data-rate="0">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </td>
+                </tr>
+                <tr data-price="600" data-date="juli 2025">
+                    <td>New York</td>
+                    <td>Juli 2025</td>
+                    <td>600€</td>
+                    <td class="rating" data-rate="0">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </td>
+                </tr>
+                <tr data-price="700" data-date="august 2025">
+                    <td>Tokyo</td>
+                    <td>August 2025</td>
+                    <td>700€</td>
+                    <td class="rating" data-rate="0">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </td>
+                </tr>
+                <tr data-price="450" data-date="septembar 2025">
+                    <td>Berlin</td>
+                    <td>Septembar 2025</td>
+                    <td>450€</td>
+                    <td class="rating" data-rate="0">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+   
+        <div class="rim-text">
+            <h3>O Rimu</h3>
+            <p>Rim je grad bogat istorijom i kulturom, poznat po svojim starim ruševinama i impresivnim građevinama. Posetite Koloseum, Forum, Panteon i mnoge druge znamenitosti.</p>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="rimvideo.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="bali-text">
+            <h3>O Baliju</h3>
+            <p>Bali je tropski raj u Indoneziji, poznat po svojim plažama, hrskavim planinama, i bogatoj tradiciji. Doživite nezaboravne avanture na ovom egzotičnom ostrvu.</p>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="balivideo.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+<!-- Učitaj Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js"></script>
+
+<!-- Učitaj moj Firebase skript -->
+<script src="firebase.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Putuj sa nama</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+
+    <style>
+        /* Vaši prilagođeni stilovi */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            background-color: #f4f1eb;
+        }
+
+        .container2 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #9e7e4e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        header h15 {
+            font-size: 2rem;
+        }
+
+        .Navigacija4 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .Navigacija4 ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .Navigacija4 ul li {
+            display: inline;
+        }
+
+        .Navigacija4 ul li a {
+            color: #9e7e4e;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            color: #6b4226;
+        }
+
+        .Navigacija4 ul li a.active {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .subheading {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7a7a7a;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        button.submit-btn {
+            background-color: #9e7e4e;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button.submit-btn:hover {
+            background-color: #7d5a3b;
+        }
+
+        footer {
+            background-color: #9e7e4e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        #brojLeta {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <nav class="Navigacija4">
+            <ul class="nav justify-content-center bg-dark p-3">
+                <li class="nav-item"><a class="nav-link text-light" href="Pocetna.html">Početna</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="O nama.html">O nama</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Ponude.html">Ponude</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Volontiranje.html">Volontiranje</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="Putuj.html">Putuj</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <div class="container2">
+        <header>
+            <h3>PUTUJ SA NAMA</h3>
+        </header>
+
+        <form id="putnikForma" action="#" method="POST">
+            <div class="form-group">
+                <label for="ime">Ime</label>
+                <input type="text" id="ime" name="ime" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prezime">Prezime</label>
+                <input type="text" id="prezime" name="prezime" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="godiste">Godište</label>
+                <input type="number" id="godiste" name="godiste" class="form-control" min="1900" max="2024" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="broj">Broj telefona</label>
+                <input type="tel" id="broj" name="broj" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="spol">Spol</label>
+                <select id="spol" name="spol" class="form-control" required>
+                    <option value="muski">Muški</option>
+                    <option value="zenski">Ženski</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="destinacija">Destinacija</label>
+                <input type="text" id="destinacija" name="destinacija" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pasos">Broj pasoša</label>
+                <input type="text" id="pasos" name="pasos" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">Prijavi se</button>
+        </form>
+
+        <div id="brojLeta"></div> <!-- Prikaz broja leta -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Turistička Agencija</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="firebase.js"></script> 
+
+
+</body> 
+</html>
+
+
