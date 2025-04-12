@@ -7,201 +7,49 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <script type="module" src="firebase.js"></script> 
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            background-color: #f4f1eb;
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
 
         .container2 {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            background-color: #9e7e4e;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            border-radius: 8px;
             margin-top: 20px;
         }
 
-        header h15 {
-            font-size: 2rem;
-        }
-
-        .Navigacija4 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .Navigacija4 ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .Navigacija4 ul li {
-            display: inline;
-        }
-
-        .Navigacija4 ul li a {
-            color: #9e7e4e;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .Navigacija4 ul li a:hover {
-            color: #6b4226;
-        }
-
-        .podnaslov1 {
-            text-align: center;
-            font-size: 1rem;
-            color: #6d3f05;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        table.volontiranje {
+        .volontiranje table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0px;
-            margin-top: 20px;
+            border-collapse: collapse;
         }
 
-        table.volontiranje th, table.volontiranje td {
-            border: 1px solid #9e7e4e;
+        .volontiranje th, .volontiranje td {
             padding: 10px;
-            text-align: center;
+            text-align: left;
         }
 
-        table.volontiranje th {
-            background-color: #9e7e4e;
-            color: rgb(255, 255, 255);
-        }
-
-        table.volontiranje td {
-            background-color: #f9f9f9;
-        }
-
-        .tekst1, .volontiranje-text {
-            margin-top: 20px;
-            font-size: 1rem;
-            color: #000000;
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: #9e7e4e;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            border-radius: 8px;
+        #commentSection {
             margin-top: 30px;
-            font-size: 0.9rem;
         }
 
-        form {
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .forma {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"], input[type="date"], input[type="email"], input[type="tel"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button.submit-btn {
-            background-color: #9e7e4e;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button.submit-btn:hover {
-            background-color: #7d5a3b;
-        }
-
-        #message {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f0f8ff;
-            border: 1px solid #9e7e4e;
-            border-radius: 4px;
-            font-size: 1rem;
-            color: #333;
-            text-align: center;
-        }
-
-        .comments-section {
-            margin-top: 40px;
-        }
-
-        .comment {
-            border: 1px solid #9e7e4e;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
-
-        .comment .comment-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-        }
-
-        .comment .comment-body {
+        .btn {
             margin-top: 10px;
         }
 
-        .delete-btn {
-            background-color: #e60000;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
+        #commentsList {
+            margin-top: 20px;
         }
 
-        .delete-btn:hover {
-            background-color: #b30000;
+        .comment {
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
         }
+
     </style>
 </head>
 <body>
@@ -218,7 +66,7 @@
 
         <div class="container2">
             <header>
-                <h15>BUDI VOLONTER</h15>
+                <h3>BUDI VOLONTER</h3>
             </header>
 
             <p class="podnaslov1">
@@ -260,7 +108,7 @@
             <div id="message"></div>
 
             <h2 class="podnaslov1">Prijava za volontiranje</h2>
-            <form id="volonterForma" method="post">
+            <form id="volonterForma" method="get" action="/volontiranje">
                 <div class="forma">
                     <label for="ime">Ime:</label>
                     <input type="text" id="ime" name="ime" required>
@@ -291,26 +139,21 @@
                 </div>
             </form>
 
-            
-<!-- Sekcija za komentare -->
-<div id="commentSection" style="display:none;">
-    <h3>Ostavite komentar</h3>
-    <textarea id="commentText"></textarea>
-    <button id="submitCommentBtn">Pošaljite komentar</button>
-    <h4>Svi komentari:</h4>
-    <div id="commentsList"></div>
-</div>
+            <div id="commentSection" style="display:none;">
+                <h3>Ostavite komentar</h3>
+                <textarea id="commentText"></textarea>
+                <button id="submitCommentBtn">Pošaljite komentar</button>
+                <h4>Svi komentari:</h4>
+                <div id="commentsList"></div>
+            </div>
 
-
-        <footer>
-            <p>&copy; 2024 Turistička agencija</p>
-        </footer>
+        </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="firebase.js"></script>
+
     <script src="script.js"></script>
 
 </body>
 </html>
+
