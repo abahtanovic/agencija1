@@ -65,6 +65,28 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     });
+
+    // Funkcija za učitavanje svih komentara
+    function loadComments() {
+        db.collection('comments').orderBy('timestamp', 'desc').get()
+        .then(function(querySnapshot) {
+            const commentsList = document.getElementById('commentsList');
+            commentsList.innerHTML = ''; // Očistite prethodne komentare
+            
+            querySnapshot.forEach(function(doc) {
+                const commentData = doc.data();
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.textContent = commentData.comment;
+                commentsList.appendChild(commentElement);
+            });
+        })
+        .catch(function(error) {
+            console.error('Greška pri učitavanju komentara: ', error);
+        });
+    }
+
+    // Dodavanje komentara u Firestore
     document.getElementById('submitCommentBtn').addEventListener('click', function() {
         const commentText = document.getElementById('commentText').value;
     
@@ -87,30 +109,10 @@ document.addEventListener("DOMContentLoaded", function() {
             alert('Molimo vas da unesete komentar!');
         }
     });
-    
-    // Funkcija za učitavanje svih komentara
-    function loadComments() {
-        db.collection('comments').orderBy('timestamp', 'desc').get()
-        .then(function(querySnapshot) {
-            const commentsList = document.getElementById('commentsList');
-            commentsList.innerHTML = ''; // Očistite prethodne komentare
-            
-            querySnapshot.forEach(function(doc) {
-                const commentData = doc.data();
-                const commentElement = document.createElement('div');
-                commentElement.classList.add('comment');
-                commentElement.textContent = commentData.comment;
-                commentsList.appendChild(commentElement);
-            });
-        })
-        .catch(function(error) {
-            console.error('Greška pri učitavanju komentara: ', error);
-        });
-    }
-    
-    // Pozovite funkciju za učitavanje komentara kada se stranica učita
+
+    // Učitaj komentare odmah po učitavanju stranice
     window.onload = loadComments;
-    
+
     // Nakon što se pošalje forma, prikazujte sekciju za komentare
     document.getElementById('volonterForma').addEventListener('submit', function(event) {
         event.preventDefault(); // Sprečite automatsko slanje forme
@@ -118,8 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Prikazivanje sekcije za komentare
         document.getElementById('commentSection').style.display = 'block';
     });
-    
-
 
     // Generisanje broja leta
     function generisiBrojLeta() {
@@ -180,4 +180,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
