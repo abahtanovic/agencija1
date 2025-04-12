@@ -2,10 +2,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Prikazuje fajlove iz foldera "public"
-app.use(agencija.static('public'));
+app.use(express.static('public')); // ovo će omogućiti serviranje sadržaja iz foldera "public"
 
-// Pokreće server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
