@@ -10,7 +10,6 @@ const firebaseConfig = {
     messagingSenderId: "988684841406",
     appId: "1:988684841406:web:59d5bee03c63bb28c149ef",
     measurementId: "G-HWLP6GYQ9S"
-
 };
 
 // Inicijalizacija Firebase aplikacije
@@ -56,13 +55,15 @@ async function loadComments() {
     const commentsList = document.getElementById('commentsList');
     commentsList.innerHTML = ''; // Očisti postojeće komentare
 
+    // Dodajte log kako biste proverili podatke
+    console.log("Komentari učitani: ", querySnapshot.docs);
+
     querySnapshot.forEach((doc) => {
         const comment = doc.data().text;
         const commentDiv = document.createElement('div');
         commentDiv.classList.add('comment');
         commentDiv.textContent = comment;
         commentsList.appendChild(commentDiv);
-    });
 }
 
 // Učitaj komentare odmah po učitavanju stranice
